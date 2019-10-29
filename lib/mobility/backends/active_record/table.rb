@@ -281,6 +281,12 @@ columns to that table.
         end
       end
 
+      # @!group Backend Accessors
+      # @!macro backend_reader
+      def read(locale, _ = nil)
+        translations.in_locale(locale)&.send(attribute)
+      end
+
       # Returns translation for a given locale, or builds one if none is present.
       # @param [Symbol] locale
       def translation_for(locale, _)
